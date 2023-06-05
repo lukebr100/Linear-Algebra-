@@ -1,9 +1,10 @@
-A = [[1, 2, 3, 10],     # initial matrix
-    [4, 5, 6, 11],
-    [7, 8, 9, 12]] 
+
 
 def column(A, i):                  # function, input: A list, element to access i
     return [sublist[i] for sublist in A]   # list comprehension
+
+
+
 
 
 # input: list of lists
@@ -29,6 +30,12 @@ def matrix(A):
     else:               
         return False
         
+        
+        
+        
+        
+        
+        
 def detect_list(L):
     if len(L) != 1:
         for i in range(len(L)):             # every sublist of L
@@ -42,34 +49,13 @@ def detect_list(L):
     else:
         print("list of length 1")
         return False
-
-def get_scale_factors(A, i): # gets scale factors for ith column
-    m = len(A)      # store number of sublists in A (rows)
-    #if matrix(A) == True and detect_list(A) == False and len(b) == m:       # checks if list is matrix compatible, there are no order higher than 2 of list of lists and the length of b is length of A
-    n = len(A[0])       # store the number of columns of A
-    C = [[0 for _ in range(n)] for _ in range(m) ]      # initailizes a list of lists of all zeros 
-    #for i in range(n):                 VERY IMPORTANT DO NOT MISS
-        #k = 0   
-        #for j in range(i, m - 1):
-            #t = A[j - k][i]
-            #C[j + 1][i] = - (A[j + 1][i] / t)
-            # rowops(A, j - k , j + 1, C[j + 1][i] )
-            #k = k + 1
         
-    #return C
-           
-
-            
-    #else: 
-        #return "Choose a valid input"
-
-A = [[1, 2, 3], 
-    [4, 5, 6], 
-    [7, 8, 9]]
-b = [10, 11, 12]        
-print(get_scale_factors(A, i))
-
-# function to perform row operations
+        
+        
+        
+        
+        
+ # function to perform row operations
 # inputs: A matrix interpretted list
 # i, j are rows (sublists) of A and
 # c is a non-zero constant such that
@@ -85,4 +71,40 @@ print( rowops(A, 0, 2, -7) )
 Y = [[1, 2, 3], 
     [4, 5, 6], 
     [7, 8, 9]]
+    
 print(rowops(Y, 0, 1, -4 ) )
+        
+        
+        
+        
+        
+        
+def gaussian_elim(A): # gets scale factors for ith column
+    m = len(A)      # store number of sublists in A (rows)
+    #if matrix(A) == True and detect_list(A) == False and len(b) == m:       # checks if list is matrix compatible, there are no order higher than 2 of list of lists and the length of b is length of A
+    n = len(A[0])       # store the number of columns of A
+    C = [[0 for _ in range(n)] for _ in range(m) ]      # initailizes a list of lists of all zeros 
+    for i in range(n):                 
+        k = 0   
+        
+        for j in range(i, m - 1):
+            t = A[j - k][i]
+            C[j + 1][i] = - (A[j + 1][i] / t)
+            k = k + 1
+        l = 0
+        for j in range(i, m - 1):
+            A = rowops( A, j - l, j + 1, C[j + 1][i])
+            l = l+1
+            
+    return A
+    
+
+
+A = [[1, 2, 3], 
+    [4, 5, 6], 
+    [7, 8, 9]]
+
+print(gaussian_elim((A))
+
+
+
