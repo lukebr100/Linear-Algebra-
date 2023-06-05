@@ -78,23 +78,32 @@ print(rowops(Y, 0, 1, -4 ) )
         
         
 def gaussian_elim(A): # gets scale factors for ith column
-    m = len(A)      # store number of sublists in A (rows)
-    #if matrix(A) == True and detect_list(A) == False and len(b) == m:       # checks if list is matrix compatible, there are no order higher than 2 of list of lists and the length of b is length of A
-    n = len(A[0])       # store the number of columns of A
-    C = [[0 for _ in range(n)] for _ in range(m) ]      # initailizes a list of lists of all zeros 
-    for i in range(n):                 
-        k = 0   
-        
-        for j in range(i, m - 1):
-            t = A[j - k][i]
-            C[j + 1][i] = - (A[j + 1][i] / t)
-            k = k + 1
-        l = 0
-        for j in range(i, m - 1):
-            A = rowops( A, j - l, j + 1, C[j + 1][i])
-            l = l+1
+    if  matrix(A) == True and detect_list(A) == False:
+        m = len(A)      # store number of sublists in A (rows)
+                        #if matrix(A) == True and detect_list(A) == False and len(b) == m:       # checks if list is matrix compatible, there are no order higher than 2 of list of lists and the length of b is length of A
+        n = len(A[0])       # store the number of columns of A
+        C = [[0 for _ in range(n)] for _ in range(m) ]      # initailizes a list of lists of all zeros 
+        for i in range(n):                 
             
-    return A
+            k = 0
+            for j in range(i, m - 1):
+                if A[j - k][i] != 0:
+                    t = A[j - k][i]
+                    C[j + 1][i] = - (A[j + 1][i] / t)
+                    k = k + 1
+                else: #print("needs a row swap (Gaussian Elimination w/ partial pivoting coming soon!")
+                    print('pivot was zero')
+                    
+                
+            l = 0
+            for j in range(i, m - 1):
+                A = rowops( A, j - l, j + 1, C[j + 1][i])
+                l = l+1
+            
+        return A
+    else:
+        return "please input a matrix"
+    
     
 A = [[1, 2, 3], 
     [4, 5, 6], 
