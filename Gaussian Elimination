@@ -53,7 +53,7 @@ def get_scale_factors(A, i): # gets scale factors for ith column
         #for j in range(i, m - 1):
             #t = A[j - k][i]
             #C[j + 1][i] = - (A[j + 1][i] / t)
-            # rowops(A, , C[][i] )
+            # rowops(A, j - k , j + 1, C[j + 1][i] )
             #k = k + 1
         
     #return C
