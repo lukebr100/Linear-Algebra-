@@ -8,9 +8,10 @@ def ge(A, b):
             for j in range(i, m - 1):
                 t = A[j - k][i]
                 C[j + 1][i] = - (A[j + 1][i] / t)
-                print(C[j][i], j, i)
+                print(C[j + 1][i], j + 1, i)
+                print(C)
                 k = k + 1
-        return C    
+        return C   
            
 
             
@@ -22,3 +23,8 @@ A = [[1, 2, 3],
     [7, 8, 9]]
 b = [10, 11, 12]        
 print(ge(A, b))
+
+# the desired output is:
+C = [[0, 0, 0], 
+    [-4, 0, 0],
+    [-7, -1.6, 0]]
