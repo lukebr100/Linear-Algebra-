@@ -96,13 +96,21 @@ def gaussian_elim(A): # gets scale factors for ith column
             
     return A
     
-
-
 A = [[1, 2, 3], 
     [4, 5, 6], 
     [7, 8, 9]]
+print(gaussian_elim( A ))
 
-print(gaussian_elim((A))
+B = [[1, 2, 3, 4], 
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]]
+print(gaussian_elim( B ))
 
+C = [[1, 2, 3], [4, 5, 6], [7,8, 9], [10, 11, 12]]
+print(gaussian_elim( C ))
 
+D = [[1, 1, 0], [1, 0, 1], [0, 1, 1]]
+print(gaussian_elim( D ))
 
+E = [[0, 0, 0], [1, 1, 1], [1, 2, 3]]
+print(gaussian_elim( E ))
