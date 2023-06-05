@@ -66,8 +66,6 @@ def rowops(A, i, j, c):
         A[j][k] = c * A[i][k] + A[j][k]     # A[j] row j is now c times row i A[i] plus row j A[j]
     return A
 
-print( rowops(A, 0, 2, -7) )
-
 Y = [[1, 2, 3], 
     [4, 5, 6], 
     [7, 8, 9]]
