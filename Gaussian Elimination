@@ -61,14 +61,16 @@ def detect_list(L):
 
 
 
-
-
-
+#input, matrix A rows i, j and nonzero c
+#output, c * Ri + Rj \rightarrow Rj, the second Rj in this expressesion
 def rowadd(A, i, j, c):
-    n = len( A[i] )       # number of columns of A
-    for k in range(n):    # for arbitary column k
-        A[j][k] = c * A[i][k] + A[j][k]     # A[j] row j is now c times row i A[i] plus row j A[j]
-    return A
+    Ri = row(A, i)
+    Rj = row(A, j)
+    n = len(Ri)
+    for i in range(n):
+        Rj[i] = c * Ri[i] + Rj[i]
+    return Rj
+    
 
 Y = [[1, 2, 3], 
     [4, 5, 6], 
