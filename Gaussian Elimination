@@ -5,12 +5,12 @@ def gaussian_elim(A): # gets scale factors for ith column
         m = len(A)      # store number of sublists in A (rows)
                         #if matrix(A) == True and detect_list(A) == False and len(b) == m:       # checks if list is matrix compatible, there are no order higher than 2 of list of lists and the length of b is length of A
         n = len(A[0])       # store the number of columns of A
-        C = [ [0 for _ in range(n)] for _ in range(m) ]      # initailizes a list of lists of all                                                    # zeros 
+        C = [ [0 for _ in range(n)] for _ in range(m) ]      # initailizes a list of lists of all zeros 
         for i in range(n):              # arbitrary column       
             
             k = 0                       # counter
             for j in range(i, m - 1):   # row from i, i + 1, ..., m - 2
-                if A[j - k][i] != 0:    # the pivot position is non-zero // j - k is                          # constant in this loop   
+                if A[j - k][i] != 0:    # the pivot position is non-zero // j - k is constant in this loop   
                     t = A[j - k][i]     # store pivot
                     C[j + 1][i] = - (A[j + 1][i] / t)               # calculate factor
                     A = rowadd( A, j - k, j + 1, C[j + 1][i])       # perform row op
