@@ -17,8 +17,6 @@ def column(A, i):                  # function, input: A list, element to access 
     return [sublist[i] for sublist in A]   # list comprehension
 
 
-print(column(A, 0))                 # 1st element of each sublist 
-
 print(len(A[0]))                    # length of 0th list in A // number of columns
 
 x = [0] * (len(A))                  # create list of zeros for every sublist in list 
