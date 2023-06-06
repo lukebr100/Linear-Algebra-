@@ -25,6 +25,27 @@ def matrix(A):
 
 
 
+
+def detect_list(L):
+    if len(L) != 1:
+        for i in range(len(L)):             # every sublist of L
+            x = L[i]                        # x is ith subslist of L
+            for j in range(len(x)):         # for j spanning indices of x
+                if isinstance(x[j], list) or isinstance(x[j], tuple):  # checks if any of the elements                
+                    print(i, j, "list")# are lists or tuples
+                    return True, i, j
+                else:
+                    print(i, j, "not a list")
+        return False
+    else:
+        print("list of length 1")
+        return False
+
+
+
+
+
+
 def gaussian_elim(A): # gets scale factors for ith column
     if  matrix(A) == True and detect_list(A) == False:
         m = len(A)      # store number of sublists in A (rows)
