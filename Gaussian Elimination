@@ -1,15 +1,17 @@
 # function, input: A list, element to access i
 # output: ith column of A
-def column(A, i):                  
+def column(A, i):
+    i = i - 1
     return [sublist[i] for sublist in A]   # list comprehension
     
     
 print(column(A, 0))                 # 1st element of each sublist 
 
-
+# input: matrix A, row to be accessed
+# output: row i
 def row(A, i):
-    x = [A[j] for j in range(len(A)) if j == i]
-    return x[0]
+i = i - 1
+    return A[i]
 
 print(row(A, 0))                    # first sublist of A
 
