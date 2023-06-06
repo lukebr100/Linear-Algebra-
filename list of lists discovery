@@ -126,3 +126,39 @@ def detect_list(L):
         return False
         
 print(detect_list([[[1,0], 2], [2, 1]]))
+
+
+
+
+                                                # comparing list comprehension and a while loop
+x =[0, 0, 3, 5, 4, 0, 0]                        # initalize vector x with some zero and non-zero entries
+                                                # we wish to extract the non-zero parts
+n = len(x)
+v = [x[i] for i in range(n) if x[i] != 0]       # creates list of nonzero numbers x[i] in list (vector) x for all i = 0, 1, ..., n - 1
+print(v)                                        
+w = [x[i] for i in range(n) if x[i] == 0]       # creates list of zeros of length equal to the number of zeros in x
+print(w)
+                                                # OR (complement method)
+w = x                                            
+for i in range(len(v)):
+    w.remove(v[i])                              # if an entry of w equals v[i] for any i, it is removed from w
+print(w)                                        # takes out all things w and v have in common, leaving w with only zeros
+
+i = 0                                       # intialize counter
+while i < n:                                # while i less than length of length of x
+    if x[i] == 0:               # if x[i] is zero
+        x.pop(i)                # x at the ith index is no long in x, x = x[0, 1, ..., i - 1, i + 1, ..., n - 1]
+        n = n - 1               # length of x shurnk by one
+    else:                                   # if x[i] is nonzero
+        i = i + 1                           # keep it, look at the next entry of x
+print(x)                                    # all non-zero entries of x
+
+j = [i for i in range(n) if x[i] == 0]          # list comp, indexes where x[i] == 0
+k = [i for i in range(n) if x[i] != 0]          # indexes where x[i] != 0
+print(j, 'indexes of zeros in x')           # Similar to which(x == 0) and
+print(k, 'indexes of nonzeros in x')        # which( x != 0 ) from R
+
+k = x
+for i in range(len(j)):
+    k.remove(x[j])
+print(k)
