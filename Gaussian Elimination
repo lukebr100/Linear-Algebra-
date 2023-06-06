@@ -1,3 +1,16 @@
+# function, input: A list, element to access i
+# output: ith column of A
+def column(A, i):                  
+    return [sublist[i] for sublist in A]   # list comprehension
+    
+def row(A, i):
+    x = [A[j] for j in range(len(A)) if j == i]
+    return x[0]
+
+
+
+
+
 # input: list of lists
 # output: if the list can be realized as a matrix (string)
 def matrix(A):
@@ -66,6 +79,45 @@ def rowswap(A, i, j):
         A[i][k] = A[j][k]
         A[j][k] = t
     return A
+
+
+
+
+
+# detects if a matrix has a row of zeros and if it is the zero matrix
+# input: A, matrix 
+# output: number of zero rows
+def detect_zeros(A):
+    m = len(A)
+    n = len(A[0])
+    count = [0 for _ in range(n)]
+    count_zeros = [0 for _ in range(m)]
+    for i in range(m):
+        for j in range(n):
+            if A[i][j] == 0:
+                count[j] = 1
+            else:
+                break
+        if sum(count) == n:
+            count_zeros[i] = 1
+    if sum( count_zeros ) == m:
+        return 'zero matrix'
+    elif 1 in count_zeros:
+        return 'non-zero matrix with', sum(count_zeros), 'zero rows'
+    else: 
+        return 'nonzero matrix'
+
+E1 = [[1, 2, 3], [1, 1, 1], [0, 0, 0]]   
+
+print(detect_zeros(E1))
+
+A = [[1, 2, 3],                        
+    [4, 5, 6], 
+    [7, 8, 9]]
+print(detect_zeros(A))
+
+
+
 
 
 
