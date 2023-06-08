@@ -162,8 +162,12 @@ S = [[[1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1], [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0], [1, 
     [[0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0], [1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1], [1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1], [0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1], [0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0], [0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1]], 
     [[0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1], [1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1], [0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0], [1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1], [1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1], [0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0], [0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1]], 
     [[0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0], [0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0], [0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0], [0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0], [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1]]]
-# input: mztrix size, random entries evenly spacedbetween 2  numbers, how many matrices
-# output: set of matrix generator
+
+
+
+
+# input: mztrix sizem, n, random entries evenly spaced between start and stop,how many matrices K
+# output: set of random matrices
 def set_rand_mtrx(m, n, start, stop, step, K):
     S = [random_matrix(m, n, start, stop, step) for i in range(K) ]
     return S
