@@ -1,9 +1,9 @@
 # Linear-Algebra-
 # algorithms in lin al
 #
+# If a list of numbers in Python is a vector, then a list of equal length sub-lists is a matrix! A set of matrices expressed in this way is a list of lists of sub-lists, ie, list cubed! Perhaps the term ‘tensor’ also applies to a set of matrices as if one arranged them in a cube for n n×n matrices or rectangular prism if one has k number of m×n matrices. random is the only package I have imported. I use random in my function set_rand_mtrx to generate a set of K random matrices m×n with random integer or rational number entries in a set range and step size.
 #
-#
-# In my undergraduate, I only MATLAB for my classes. MATLAB is short for Matrix Labrotory. MATLAB interprets 
+# MATLAB is short for Matrix Labrotory. MATLAB interprets 
     A = [1, 2, 3, 4] == [1 2 3 4]
 # as a row vector whose ith component, 1 <= i <= 4, can be accessed by
     A[i]
