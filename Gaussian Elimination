@@ -128,7 +128,6 @@ print(detect_zeros(A))
 
 
 
-
 def gaussian_elim(A): # gets scale factors for ith column
     if  matrix(A) == True and detect_list(A) == False:
         m = len(A)      # store number of sublists in A (rows)
@@ -144,31 +143,11 @@ def gaussian_elim(A): # gets scale factors for ith column
                     C[j + 1][i] = - (A[j + 1][i] / t)               # calculate factor
                     A = rowadd( A, j - k, j + 1, C[j + 1][i])       # perform row op
                     k = k + 1                                       # add to counter
-                else: 
-                    o = 0
-                    for p in range(n):
-                        if A[j - k][p] == 0:
-                            o = o + 1
-                        else:
-                            break
-                    if o == n:
-                        for q in range(j - k + 1, m):
-                            a = 0
-                            for r in range(n):
-                                if A[q][r] == 0:
-                                    a = a + 1
-                            if a == n:
-                                print('row', q, 'is all zeros')
-                            
-                        #return gaussian_elim(A)
-                    else:
-                        A = rowswap(A, j - k, o)
-                        #return gaussian_elim(A)
-                    print('pivot was zero')
-            
         return A
     else:
         return "please input a matrix"
+    
+
     
 
 
