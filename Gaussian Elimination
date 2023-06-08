@@ -21,15 +21,21 @@ def vector_matrix_test(A):
             return 'column vector'
         else:
             return 'matrix'
-A = [[1, 2, 3], 
- [3, 4]]
- print(vector_matrix_test(A))
+            
+N = []
+print(vector_matrix_test(N))
 
+M = [[1, 2, 3], [3, 4]]
+print(vector_matrix_test(M))
+
+A = [[1, 0], [0, 1]]
+print(vector_matrix_test(A))
 
 B = [1, 2, 3, 4]
 print(vector_matrix_test(B))
 
-
+C = [[1], [2], [3]]
+print(vector_matrix_test(C))
 
 
 
