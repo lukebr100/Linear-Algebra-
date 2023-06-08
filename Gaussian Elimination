@@ -1,8 +1,45 @@
-# function, input: A list, element to access i
+# input:fundamental object
+# output: if the list can be realized as a matrix (string)
+def vector_matrix_test(A):
+    n = len(A)
+    if n == 0:
+        return "empty list"
+    elif n == 1 and isinstance(A[0], (int, float, complex)) == 1:
+        print(A, "is a one-by-one matrix")
+        return True
+    elif n >= 2:
+        x = [0 for i in range(n)]
+        for i in range(n):
+            if isinstance(A[i], (int, float, complex)) == 1:
+                return 'row vector'
+            elif isinstance(A[i], (list, tuple)) == 1:
+               x[i] = len(A[i])
+               j = i
+               if i >= 1 and x[i] != x[i - 1]:
+                   return 'sublength variation occurs not matrix'
+        return 'matrix'           
+A = [[1, 2, 3], 
+ [3, 4]]
+ print(vector_matrix_test(A))
+
+
+B = [1, 2, 3, 4]
+print(vector_matrix_test(B))
+
+
+
+
+
+# function, input: A matrix column to access
 # output: ith column of A
 def column(A, i):
-    i = i - 1
-    return [sublist[i] for sublist in A]   # list comprehension
+    if vector_matrix(A) == 'row vector':                                        # input matrix is row vector
+        return [A[i - 1]]
+    elif vector_matrix(A) == 'column vector':                                   # input is column vector
+         return [sublist[0] for sublist in A]
+    elif vector_matrix_test(A) == 'matrix':                                   # input is matrix               
+        i = i - 1
+        return [sublist[i] for sublist in A]                                # output the ith entry of each sublist
     
     
 print(column(A, 0))                 # 1st element of each sublist 
@@ -17,48 +54,16 @@ print(row(A, 0))                    # first sublist of A
 
 
 
-# input: list of lists
-# output: if the list can be realized as a matrix (string)
-def matrix(A):
-    n = len(A)                      # n is the number of sublists in A
-    x = [0] * (n - 1)               # x is a list of n - 1 zeros
-                                    
-                                    # loop to compare length of 1st sublist to every other sublist
-    for j in range(1, n):           # j goes from 1, 2, ..., n - 1
-        if len(A[0]) == len(A[j]):  # compare 
-            x[j - 1] = 1            # store value 1 into (j - 1)st entry of list x
-            
-                                    # loop to count number of entries that are 1
-    counter = 0                     # intiailze a counter
-    for j in range(n - 1):              # j goes from 0, 1, ..., n - 1
-        counter = counter + x[j]    # store counter plus x[j] into counter 
-                                    # end loop
-                                    
-        
-    if counter == n - 1:                # if total number of equal length sublists in x                                              # is the number of sublists of A
-        return A, "can be realized as matrix"
-    else:               
-        return A, "cannot be realized as a matrix"
 
 
 
-
-
-
-def detect_list(L):
-    if len(L) != 1:
-        for i in range(len(L)):             # every sublist of L
-            x = L[i]                        # x is ith subslist of L
-            for j in range(len(x)):         # for j spanning indices of x
-                if isinstance(x[j], list) or isinstance(x[j], tuple):  # checks if any of the elements                
-                    print(i, j, "list")# are lists or tuples
-                    return True, i, j
-                else:
-                    print(i, j, "not a list")
-        return False
-    else:
-        print("list of length 1")
-        return False
+def detect_type(L):
+    for i in range(len(L)):                                         # every sublist of L                                               # x is ith subslist of L
+        for j in range(L[i]):                                     # for j spanning indices of x
+             if isinstance(L[i][j], (str, list, dict, tuple)) == 1:   # checks if any of the elements                
+                 return 'nonvalid data object type'                                          # cannot use it as a matrix
+     return True
+     
 
 
 
@@ -129,7 +134,7 @@ print(detect_zeros(A))
 
 
 def gaussian_elim(A): # gets scale factors for ith column
-    if  matrix(A) == True and detect_list(A) == False:
+    if  matrix(A) == True and detect_type(A) == True:
         m = len(A)      # store number of sublists in A (rows)
                         #if matrix(A) == True and detect_list(A) == False and len(b) == m:       # checks if list is matrix compatible, there are no order higher than 2 of list of lists and the length of b is length of A
         n = len(A[0])       # store the number of columns of A
