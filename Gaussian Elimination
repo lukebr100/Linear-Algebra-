@@ -17,7 +17,10 @@ def vector_matrix_test(A):
                j = i
                if i >= 1 and x[i] != x[i - 1]:
                    return 'sublength variation occurs not matrix'
-        return 'matrix'           
+        if len(A[0]) == 1:
+            return 'column vector'
+        else:
+            return 'matrix'
 A = [[1, 2, 3], 
  [3, 4]]
  print(vector_matrix_test(A))
