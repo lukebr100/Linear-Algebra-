@@ -51,15 +51,20 @@ def column(A, i):
         return [sublist[i] for sublist in A]                                # output the ith entry of each sublist
     
     
-print(column(A, 0))                 # 1st element of each sublist 
+print(column(A, 1))                 # 1st element of each sublist 
 
 # input: matrix A, row to be accessed
 # output: row i
 def row(A, i):
-i = i - 1
-    return A[i]
+    if vector_matrix_test(A) == 'row vector':
+        return A
+    elif vector_matrix_test(A) == 'column vector' or vector_matrix_test(A) == 'matrix':
+        i = i - 1
+        return A[i]
+     else: 
+        return A, 'is not a matrix'
 
-print(row(A, 0))                    # first sublist of A
+print(row(A, 1))                    # first sublist of A
 
 
 
