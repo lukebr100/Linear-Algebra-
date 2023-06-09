@@ -5,7 +5,6 @@ def vector_matrix_test(A):
     if n == 0:
         return "empty list"
     elif n == 1 and isinstance(A[0], (int, float, complex)) == 1:
-        print(A, "is a one-by-one matrix")
         return True
     elif n >= 2:
         x = [0 for i in range(n)]
@@ -43,12 +42,12 @@ print(vector_matrix_test(C))
 # output: ith column of A
 def column(A, i):
     if vector_matrix(A) == 'row vector':                                        # input matrix is row vector
-        return [A[i - 1]]
+        return [[A[i - 1]]]
     elif vector_matrix(A) == 'column vector':                                   # input is column vector
-         return [sublist[0] for sublist in A]
+         return [[sublist[0]] for sublist in A]
     elif vector_matrix_test(A) == 'matrix':                                   # input is matrix               
         i = i - 1
-        return [sublist[i] for sublist in A]                                # output the ith entry of each sublist
+        return [[sublist[i]] for sublist in A]                                # output the ith entry of each sublist
     
     
 print(column(A, 1))                 # 1st element of each sublist 
@@ -56,9 +55,10 @@ print(column(A, 1))                 # 1st element of each sublist
 # input: matrix A, row to be accessed
 # output: row i
 def row(A, i):
-    if vector_matrix_test(A) == 'row vector':
+    i = i - 1
+    if vector_matrix_test(A) == 'row vector' and i == 1:
         return A
-    elif vector_matrix_test(A) == 'column vector' or vector_matrix_test(A) == 'matrix':
+    elif vector_matrix_test(A) == 'matrix' or vector_matrix_test(A) == 'column vector':
         i = i - 1
         return A[i]
      else: 
@@ -72,9 +72,9 @@ print(row(A, 1))                    # first sublist of A
 
 
 def detect_type(L):
-    for i in range(len(L)):                                         # every sublist of L                                               # x is ith subslist of L
-        for j in range(L[i]):                                     # for j spanning indices of x
-             if isinstance(L[i][j], (str, list, dict, tuple)) == 1:   # checks if any of the elements                
+    for i in range(len(L)):                                                     # every sublist of L                                            
+        for j in range(L[i]):                                                   # for j spanning indices of x
+             if isinstance(L[i][j], (str, list, dict, tuple)) == 1:             # checks if any of the elements                
                  return 'nonvalid data object type'                                          # cannot use it as a matrix
      return True
      
@@ -90,7 +90,8 @@ def rowadd(A, i, j, c):
     n = len(Ri)
     for i in range(n):
         Rj[i] = c * Ri[i] + Rj[i]
-    return Rj
+    A[j] = Rj
+    return A
     
 
 Y = [[1, 2, 3], 
@@ -100,14 +101,13 @@ Y = [[1, 2, 3],
 # print( rowadd(Y, 0, 1, -4 ), 'rowadd' )
 
 def rowswap(A, i, j):
-    n = len( A[i] )
-    for k in range(n):
-        t = A[i][k]
-        A[i][k] = A[j][k]
-        A[j][k] = t
+    Ri = row(A, i)
+    Rj = row(A, j)
+    
+    t = Rj
+    A[j - 1] = A[i - 1]
+    A[i - 1] = t
     return A
-
-
 
 
 
