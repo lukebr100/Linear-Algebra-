@@ -1,14 +1,16 @@
-A = [[1, 2, 3, 10],     # initial matrix
+A = [[1, 2, 3, 10],
     [4, 5, 6, 11],
     [7, 8, 9, 12]] 
-    
-print(A)                # Unknown:
-print(A[:])             # what is the difference
+# initial matrix
+### Open question: what is the difference? in the following three lines
+# 1
+print(A)
+print(A[:])
+# 2
+print(A[:][0])
+print(A[0])
+print(A[0][:])
 
-print(len(A))           # number of sublists in list of list // rows
-
-print(A[:][0])          # Unknown:
-print(A[0])             # differnce?
 
 print(A[0][1])          # specific entry // 1st entry of 0th list
 
