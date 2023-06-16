@@ -1,55 +1,5 @@
 import random
 
-
-def column(A, i):                  # function, input: A list, element to access i
-    return [sublist[i] for sublist in A]   # list comprehension
-#print(column([[1, 0], [0, 1]], 0))
-
-
-    
-def row(A, i):
-    return A[i]
-    
-#print(row([[1, 2], [3, 4]], 1))
-
-    
-
-x = [0,0, 3, 4, 5, 0, 0]
-            
-n = len(x)
-
-
-j = [i for i in range(n) if x[i] == 0]          # list comp, indexes where x[i] == 0
-k = [i for i in range(n) if x[i] != 0]          # indexes where x[i] != 0
-#print(j, 'indexes of zeros in x')           # Similar to which(x == 0) and
-#print(k, 'indexes of nonzeros in x')        # which( x != 0 ) from R
-
-
-for i in j:
-    x.remove(0)
-#print(x)
-    
-
-# input, matrix A, row j, column i
-# output, rows where zeros occur from row j, j + 1, ..., m - 1
-def find_zero(A, i, j):
-    m = len(A)
-    A_coli = column(A, i)
-    zeros = [0 for _ in range(j, m)]
-    for k in range(j, m):
-        if A_coli[k] == 0:
-            zeros[k - j] = 1
-    return [i + j for i in range(m - j) if zeros[i] == 1]
-            
-# def find_zeros(A, z, )
-
-A = [[1, 0, 0], 
-    [0, 1, 0],
-    [0, 0, 1]]
-# print(find_zero(A, 0, 2))
-
-
-
 #input: number of rows, cols of ranomd matrix
         # numbers start <= x <= stop - 1
         # step is evenly spaced slice of interval [start stop - 1]
@@ -147,8 +97,7 @@ R10 = [[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
      [0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0]]
      
 R = [R1, R2, R3, R4, R5,  R6, R7,  R8,  R9,  R10] # list cubed
-
-# print(R[0] == R1)
+print(R[0][:])
 
 # S = [random_matrix(7, 11, 0, 2, 1) for i in range(10)]  list comp. same as above for loop that print random matrix; list^3
 # print(S)
@@ -171,11 +120,4 @@ S = [[[1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1], [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0], [1, 
 def set_rand_mtrx(m, n, start, stop, step, K):
     S = [random_matrix(m, n, start, stop, step) for i in range(K) ]
     return S
-# print(set_matrices(3, 4, 0, 11, 1, 3))
-
-
-print(R[0])
-print(find_zero(R[0], 0, 0))   # finds locations of zeros in first column of R[0]
-
-
-print(column(R[0], 0))         # first column of matrix R[0]
+# print(set_rand_mtrx(3, 4, 0, 11, 1, 3))

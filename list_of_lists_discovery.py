@@ -2,161 +2,115 @@ A = [[1, 2, 3, 10],     # initial matrix
     [4, 5, 6, 11],
     [7, 8, 9, 12]] 
     
-print(A)                # print list of list // matrix
-print(A[:])             # print list of list // matrix
+print(A)                # Unknown:
+print(A[:])             # what is the difference
 
 print(len(A))           # number of sublists in list of list // rows
 
-print(A[:][0])          # specific row
-print(A[0])             # specific row 
+print(A[:][0])          # Unknown:
+print(A[0])             # differnce?
 
 print(A[0][1])          # specific entry // 1st entry of 0th list
 
 
-def column(A, i):                  # function, input: A list, element to access i
-    return [sublist[i] for sublist in A]   # list comprehension
-
-
-print(len(A[0]))                    # length of 0th list in A // number of columns
-
-x = [0] * (len(A))                  # create list of zeros for every sublist in list 
-print(x)
-
-
-# checks if all sublists are same length
-for j in range(1, len(A)):     # from 1 to len(A) - 1     
-    if len(A[0]) == len(A[j]): # if length of 0th sublist is equal to jth sublist
-        print('true')          # print true
-    else: 
-        print('false')
-# input: list of lists
-# output: if the list can be realized as a matrix (string)
-def matrix(A):
-    n = len(A)                      # n is the number of sublists in A
-    x = [0] * (n - 1)               # x is a list of n - 1 zeros
-                                    
-                                    # loop to compare length of 1st sublist to every other sublist
-    for j in range(1, n):           # j goes from 1, 2, ..., n - 1
-        if len(A[0]) == len(A[j]):  # compare 
-            x[j - 1] = 1            # store value 1 into (j - 1)st entry of list x
-            
-                                    # loop to count number of entries that are 1
-    counter = 0                     # intiailze a counter
-    for j in range(n - 1):              # j goes from 0, 1, ..., n - 1
-        counter = counter + x[j]    # store counter plus x[j] into counter 
-                                    # end loop
-                                    
-        
-    if counter == n - 1:                # if total number of equal length sublists in x                                              # is the number of sublists of A
-        return A, "can be realized as matrix"
-    else:               
-        return A, "cannot be realized as a matrix"
-
-        
-print(matrix(A))    # can be realized as a matrix
-
 B = [[1, 2],
     [3, 4], 
-    [5]]
-print(matrix(B))    # not a matrix
+    [5]]            
+# not a matrix
 
-C = [1]         
-print(matrix(C))    # can be realized as a (1 x 1) matrix
-C1 = []
-print(matrix(C1))   # empty list not a matrix
+C = [1]             
+# one-by-one matrix
 
-D = [[5],           
-    [1, 2], 
-    [3, 4]]
-print(matrix(D))    # not a matrix
+C1 = []             
+# empty list not a matrix
 
-E = [['a', 1, 2],           # according to matrix function, a list of mixed string, logical, and  
-    [True, 5, 5],           # numbers
-    ["dog", "cat", "fish"]]     
-print(matrix(E))            # can be realized as a matrix
+E = [['a', 1, 2],        
+    [True, 5, 5],       
+    ["dog", "cat", "fish"]]
+# matrix ??? you decide
+# E present here would fail vector_matrix_test(E)
 
-F = [[[1, 1], 0],        # [list of list of lists]
-    [0, 0]]                 # if a entry of a sublist is a list, then
-print(matrix(F))            # the function claims it is a matrix, but this is not true without more                          # work
+F = [[[1, 1], 0],           
+    [0, 0]]
+# without more work, it is not a matrix...
+# failed matrices B and F have potential 
+
 
 G = [[[[1, 2], 3], 1], 
     [1, 1]]
-print(matrix(G))            # similarly for higher order list of lists, matrix function claims it is                         # a matrix
+# similarly, higher order lists?
 
-H = ((1, 2),                # a tuple of tuples work as matrices, but for later programs
-    (3, 4))                 # they should not be used because tuples are immuatable
-print(matrix(H))            
+H = ((1, 2),                
+    (3, 4))
+# a tuple of tuples work as matrices, but for later programs
+# they should not be used because tuples are immuatable
+
 
 I = [(1, 2),    
     (3, 4)]
-print(matrix(I))            # list of tuples can be realized as a matrix
+# list of tuples
 
 J = ([1, 2],
     [3, 4])
-print(matrix(J))            # tuple of lists can be realized as a matrix
+# tuple of lists
 
-                # we can assume that, under certain conditions, higher order tuple of tuples
-                # will get misinterpreted as a matrix by matrix 
-                
+# higher order tuples also
+
+
+
+
 K = [[0.5, 0],
     [0, 1]]
-# print(K[0][0][0]) pop an error
+# print(K[0][0][0]) pop an error, int and float are not scriptable 
 
 L = [[2, [0,1]],
     [3, 4]]
 print(len(L[1]))
-print(len(column(L, 1)))
 
-
-def detect_list(L):
-    if len(L) != 1:
-        for i in range(len(L)):             # every sublist of L
-            x = L[i]                        # x is ith subslist of L
-            for j in range(len(x)):         # for j spanning indices of x
-                if isinstance(x[j], list) or isinstance(x[j], tuple):  # checks if any of the elements                
-                    print(i, j, "list")# are lists or tuples
-                    return True, i, j
-                else:
-                    print(i, j, "not a list")
-        return False
-    else:
-        print("list of length 1")
-        return False
-        
-print(detect_list([[[1,0], 2], [2, 1]]))
+print( [L[0] for i in range(len(L))] )
 
 
 
 
-                                                # comparing list comprehension and a while loop
+
+
+
+# comparing list comprehension and loops
 x =[0, 0, 3, 5, 4, 0, 0]                        # initalize vector x with some zero and non-zero entries
-                                                # we wish to extract the non-zero parts
+print(x)
+# we wish to extract the non-zero parts
+
+# LIST COMP.
 n = len(x)
 v = [x[i] for i in range(n) if x[i] != 0]       # creates list of nonzero numbers x[i] in list (vector) x for all i = 0, 1, ..., n - 1
-print(v)                                        
+print(v)             
 w = [x[i] for i in range(n) if x[i] == 0]       # creates list of zeros of length equal to the number of zeros in x
 print(w)
-                                                # OR (complement method)
-w = x                                            
-for i in range(len(v)):
-    w.remove(v[i])                              # if an entry of w equals v[i] for any i, it is removed from w
-print(w)                                        # takes out all things w and v have in common, leaving w with only zeros
 
-i = 0                                       # intialize counter
+# (or) REMOVE METHOD
+y = x[:]  
+print(y, x)                                                      
+for i in range(len(w)):         # there are len(w) zeros in x
+    y.remove(w[i])              # w[i] == 0 for all i, removing the first entry equal to zero from x in this case four times 0, 1, 2, 3
+print(y, x)                        # be careful with indexes w/ looping over x.remove and x.pop
+
+
+
+# (or) POP METHOD
+y = x[:]
+i = 0
+n = len(y)
 while i < n:                                # while i less than length of length of x
-    if x[i] == 0:               # if x[i] is zero
-        x.pop(i)                # x at the ith index is no long in x, x = x[0, 1, ..., i - 1, i + 1, ..., n - 1]
+    if y[i] == 0:               # if x[i] is zero
+        y.pop(i)                # x at the ith index is no long in x, x = x[0, 1, ..., i - 1, i + 1, ..., n - 1]
         n = n - 1               # length of x shurnk by one
     else:                                   # if x[i] is nonzero
         i = i + 1                           # keep it, look at the next entry of x
-print(x)                                    # all non-zero entries of x
+print(y, x)                                    # all non-zero entries of x
 
-j = [i for i in range(n) if x[i] == 0]          # list comp, indexes where x[i] == 0
+n = len(x)
+# MORE LIST COMP. (which in RStudio)
+j = [i for i in range(n) if x[i] == 0]          # indexes where x[i] == 0
 k = [i for i in range(n) if x[i] != 0]          # indexes where x[i] != 0
-print(j, 'indexes of zeros in x')           # Similar to which(x == 0) and
-print(k, 'indexes of nonzeros in x')        # which( x != 0 ) from R
-
-k = x
-for i in range(len(j)):
-    k.remove(x[j])
-print(k)
+print(j, 'location of zeros in x')
+print(k, 'indexes of nonzeros in x')    
