@@ -22,12 +22,12 @@ def gaussian_elim(A):
                     C[j + 1][i] = - (B[j + 1][i] / t)               # calculate factor
                     B = rowadd( B, j - k, j + 1, C[j + 1][i])       # perform row op
                     k = k + 1                                       # add to counter
-                elif B[j - k][i] == 0 and B[j + 1][i] != 0:         # as of 6/16/23 handles if a pivot position is zero, swaps zero in pivot spot w/ a nonzero entry  
+                elif B[j - k][i] == 0 and B[j + 1][i] != 0:         #  handles if a pivot position is zero, swaps zero in pivot spot w/ a nonzero entry  
                     B = rowswap(B, j - k, j + 1)                    # rowswap of rows j - k and j + 1 in B
                     return gaussian_elim(B)                         # run this algorithm on the result, the new element in the pivot is non-zero!
         return B
     else:
-        return "please input a matrix"
+        return False
     
 
     
