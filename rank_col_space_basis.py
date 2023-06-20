@@ -1,4 +1,4 @@
-from gaussian_elim import gaussian elim
+from gaussian_elim import gaussian_elim
 from print_matrix import print_matrix
 
 def rank(A):
@@ -43,6 +43,7 @@ def piv_pos(A):
                 J[i] = j
                 break
     return J, r, tildeA
+
 def col_space_basis(A):
     Jr = piv_pos(A)
     J = Jr[0]
