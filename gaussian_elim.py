@@ -1,8 +1,6 @@
-from detect_type import detect_type
-from vector_matrix_test import vector_matrix_test
-from rowops import rowadd
+from matrix_tests import detect_type, vector_matrix_test
+from rowops import rowadd, rowswap
 from print_matrix import print_matrix
-from rowops import rowswap
 from row_i import row
 
 def gaussian_elim(A, b):
