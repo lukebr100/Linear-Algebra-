@@ -42,7 +42,7 @@ def piv_pos(A):
             if tildeA[i][j] != 0:
                 J[i] = j
                 break
-    return J, r
+    return J, r, tildeA
 def col_space_basis(A):
     Jr = piv_pos(A)
     J = Jr[0]
