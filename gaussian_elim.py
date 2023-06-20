@@ -1,4 +1,4 @@
-from matrix_tests import detect_type, vector_matrix_test
+from matrix_tests import vector_matrix_test
 from rowops import rowadd, rowswap
 from print_matrix import print_matrix
 from row_i import row
