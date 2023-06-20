@@ -1,4 +1,4 @@
-from vector_matrix_test import vector_matrix_test
+from matrix_tests import vector_matrix_test
 # function, input: A matrix column to access
 # output: ith column of A
 def column(A, i):
