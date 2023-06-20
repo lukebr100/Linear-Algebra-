@@ -3,6 +3,7 @@ from vector_matrix_test import vector_matrix_test
 from rowops import rowadd
 from print_matrix import print_matrix
 from rowops import rowswap
+from row_i import row
 
 
 def gaussian_elim(A):
@@ -10,7 +11,7 @@ def gaussian_elim(A):
         m = len(A)          # store number of sublists in A (rows)
         n = len(A[0])       # store the number of columns of A
         C = [ [0 for _ in range(n)] for _ in range(m) ]      # initailizes matrix of cofactors[sic?]
-        B = [row[:] for row in A]                                             # !!! NOTICE [:] !!! idk why i need it though?
+        B = [row(A, i) for i in range(m)]
         for i in range(n):              # arbitrary column       
             k = 0                       # counter
             
