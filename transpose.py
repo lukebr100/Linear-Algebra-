@@ -1,4 +1,4 @@
-from vector_matrix_test import vector_matrix_test
+from matrix_tests import vector_matrix_test
 from print_matrix import print_matrix
 
 def transpose(A):
