@@ -6,7 +6,7 @@ from row_i import row
 def gaussian_elim(A, b):
     m = len(A)
     # store number of rows
-    if  vector_matrix_test(A)[0] == True and detect_type(A)[0] == True and len(b) == m:
+    if  vector_matrix_test(A)[0] == True and len(b) == m:
         n = len(A[0])
         # store the number of columns of A
         C = [ [0 for _ in range(n)] for _ in range(m) ]
