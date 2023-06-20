@@ -1,4 +1,4 @@
-from vector_matrix_test import vector_matrix_test
+from matrix_tests import vector_matrix_test
 def row(A, i):
     B = A
     if 'row vector' in vector_matrix_test(B)[1] and i == 0:
