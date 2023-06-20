@@ -1,5 +1,4 @@
-from matrix_tests import vecnum_test
-from matrix_tests import vector_matrix_test
+from matrix_tests import vecnum_test, vector_matrix_test
 
 def dot_product(x, y):
     # function (dot/scalar product): input number vectors x, y
