@@ -88,13 +88,14 @@ def ge_incon_ID(A, b):
     m = len(A[:])
     # number of rows 
     Zrow = [j for j in range(m) if tildeA[0][j] == [0 for i in range(n)]]
-    # identifies rows of zeros in tildeA[0](REF of A), return indexes where these occur
+    # IDs ROW of ZEORS in REF of A, returns the ROW INDEX of MATRIX where this occurs
     for k in Zrow:
-        # for all zero rows
+        # for each ROW of ZEROS
         if b[k] != 0:
-            # b at that index is non-zero
-            # but LHS is zero, ie, 0*x + 0*y + 0*z = 2
-            # inconsistent, return GE of Ax = b
+            # IF RHS is NON-ZERO and LHS is ZERO -> INCONSISTENT
+            # e.g. 0 * x + 0 * y + 0 * z = 2
+            # return string("INCONSISTENT"), REF Ax=b
             return 'inconsistent', tildeA
     return 'consistent', tildeA
-    # consistent system, return GE of Ax = b
+    # if we get through all ROW of ZEROS and there is NO 0*x + 0*y + 0*z = 2
+    # then return "CONSISTENT', REF of AX=b
