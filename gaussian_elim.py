@@ -1,7 +1,6 @@
 from matrix_tests import test_MatrixVect
-from rowops import rowadd, rowswap
+from rowops import rowadd, rowswap, rowscale_0, row
 from print_matrix import print_matrix
-from row_i import row
 
 def gaussian_elim(A):
     m = len(A)
