@@ -1,6 +1,8 @@
 from gaussian_elim import gaussian_elim
-from column_i import column
-from row_i import row
+from transpose import transpose
+# MAKE colops.py, MOVE column there, ADD three column operations, DO NOT import colswap, coladd, colscale 
+from colops import column
+from rowops import row
 
 def rank(A):
     # rank function: determines rank of a matrix <->  # of non-zero rows in REF, # of vectors in column space/row space, # of pivots
@@ -50,4 +52,22 @@ def col_space_basis(A):
     J = Jr[0]
     r = Jr[1]
     return [column(A, i) for i in J]
+
+from rank_col_space_basis import rank, col_space_basis
+from row_i import row
+
+
+### taking TRANSPOSE, then computing COL_SPACE_BASIS is equivalent to BASIS for ROWSPACE
+### ADD justifcation
+def row_space_t(A):
+    tA = transpose(A)
+    return col_space_basis(tA)
+
+
+### taking NON-ZERO ROWS of REF of A as BASIS for ROWSPACE
+def row_space_std(A):
+    rA = rank(A)
+    r = rA[0]
+    tildeA = rA[1]
+    return [row(tildeA, i) for i in range(r)]
 
