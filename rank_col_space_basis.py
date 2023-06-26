@@ -53,9 +53,6 @@ def col_space_basis(A):
     r = Jr[1]
     return [column(A, i) for i in J]
 
-from rank_col_space_basis import rank, col_space_basis
-from row_i import row
-
 
 ### taking TRANSPOSE, then computing COL_SPACE_BASIS is equivalent to BASIS for ROWSPACE
 ### ADD justifcation
